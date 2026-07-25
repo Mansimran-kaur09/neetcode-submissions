@@ -1,0 +1,37 @@
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     constructor(val = 0, next = null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+
+class Solution {
+    /**
+     * @param {ListNode} head
+     * @return {void}
+     */
+    reorderList(head) {
+        let current = head;
+        let nodes = [];
+
+        while(current) {
+            nodes.push(current);
+            current = current.next;
+        }
+
+        let i=0, j=nodes.length-1;
+        while(i < j) {
+            nodes[i].next = nodes[j];
+            i++;
+            if(i >= j) break;
+            nodes[j].next = nodes[i];
+            j--;
+        }
+        nodes[i].next = null;
+
+        return nodes;
+    }
+}
