@@ -1,0 +1,23 @@
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @return {void} Do not return anything, modify nums in-place instead.
+     */
+    sortColors(nums: number[]): void {
+        let mid: number = 0,
+            low: number = 0,
+            high: number = nums.length - 1;
+
+        while (mid <= high) {
+            if (nums[mid] === 0) {
+                [nums[low], nums[mid]] = [nums[mid], nums[low]];
+                low++;
+            } else if (nums[mid] === 2) {
+                [nums[mid], nums[high]] = [nums[high], nums[mid]];
+                high--;
+                mid--;
+            }
+            mid++;
+        }
+    }
+}
